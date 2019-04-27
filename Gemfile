@@ -18,6 +18,9 @@ gem 'uglifier', '>= 1.3.0'
 # User Authinicate gem
 gem 'devise'
 
+# dotenv to  load environment variables
+gem 'dotenv-rails', groups: [:development, :test]
+
 #bootstrap and jquery
 gem 'jquery-rails'
 gem 'bootstrap-sass', '~> 3.2.0'

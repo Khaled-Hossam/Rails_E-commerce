@@ -14,7 +14,7 @@ default: &default
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
-  password: Os@12345
+  password: <%= ENV["DATABASE_PASSWORD"] %>
   socket: /var/run/mysqld/mysqld.sock
 
 development:
@@ -23,7 +23,7 @@ development:
   encoding: utf8mb4
   database: rails
   username: root
-  password: Os@12345
+  password: <%= ENV["DATABASE_PASSWORD"] %>
   host: localhost
 
 # Warning: The database defined as "test" will be erased and
