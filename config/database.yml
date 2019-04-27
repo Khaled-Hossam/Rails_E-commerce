@@ -21,9 +21,9 @@ development:
   <<: *default
   adapter: mysql2
   encoding: utf8mb4
-  database: rails
-  username: root
-  password: Os@12345
+  database: ******
+  username: ******
+  password: ******
   host: localhost
 
 # Warning: The database defined as "test" will be erased and
