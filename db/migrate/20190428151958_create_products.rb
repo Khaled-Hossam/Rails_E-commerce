@@ -15,5 +15,5 @@ class CreateProducts < ActiveRecord::Migration[5.2]
   end
 end
 
-# the command t generate scaffold
+# the command to generate scaffold
 # rails generate scaffold product name:string description:text price:decimal instock_quantity:integer image:references category:references brand:references store:references
