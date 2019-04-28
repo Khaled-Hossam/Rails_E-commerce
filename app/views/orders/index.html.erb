@@ -5,7 +5,6 @@
 <table>
   <thead>
     <tr>
-      <th>Date</th>
       <th>State</th>
       <th>User</th>
       <th>Coupon</th>
@@ -16,7 +15,6 @@
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= order.date %></td>
         <td><%= order.state %></td>
         <td><%= order.user %></td>
         <td><%= order.coupon %></td>

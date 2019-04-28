@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :ratings
   resources :orders
+  resources :ratings
   resources :states
   resources :order_products
   resources :images
