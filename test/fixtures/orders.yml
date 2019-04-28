@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2019-04-28 18:08:50
+  state: one
+  user: one
+  coupon: one
+
+two:
+  date: 2019-04-28 18:08:50
+  state: two
+  user: two
+  coupon: two
