@@ -5,5 +5,6 @@ class CreateBrands < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+    add_index :brands, :name, unique: true
   end
 end
