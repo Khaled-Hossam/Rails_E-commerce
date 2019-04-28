@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Purchased price:</strong>
+  <%= @order_product.purchased_price %>
+</p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @order_product.order %>
+</p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @order_product.product %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @order_product.state %>
+</p>
+
+<%= link_to 'Edit', edit_order_product_path(@order_product) %> |
+<%= link_to 'Back', order_products_path %>
