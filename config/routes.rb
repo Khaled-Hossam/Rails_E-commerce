@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get 'home/index'
   resources :brands
   resources :categories
+  resources :cart_products
+
   devise_for :users
 
   root 'home#index'
