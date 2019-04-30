@@ -9,6 +9,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    @products = Product.last(3).reverse
   end
 
   # GET /products/new
