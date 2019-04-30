@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <title>RailsECommerce</title>
     <%= csrf_meta_tags %>
@@ -19,9 +20,41 @@
 
     <%# <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %> 
     <%# <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %> 
+
+
+
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Asbab - eCommerce HTML5 Templatee</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Place favicon.ico in the root directory -->
+    <%= image_tag "favicon.ico" %>
+    
+
+    <!-- All css files are included here. -->
+    <!-- Bootstrap fremwork main css -->
+    <%= stylesheet_link_tag "bootstrap.min.css" %>
+    <!-- Owl Carousel min css -->
+    <%= stylesheet_link_tag "owl.carousel.min.css" %>
+    <%= stylesheet_link_tag "owl.theme.default.min.css" %>
+    <!-- This core.css file contents all plugings css file. -->
+        <%= stylesheet_link_tag "core.css" %>
+    <!-- Theme shortcodes/elements style -->
+    <%= stylesheet_link_tag "shortcode/shortcodes.css" %>
+    <!-- Theme main style -->
+     <%= stylesheet_link_tag "style.css" %>
+    <!-- Responsive css -->
+        <%= stylesheet_link_tag "responsive.css" %>
+    <!-- User style -->
+    <%= stylesheet_link_tag "custom.css" %>
+    <!-- Modernizr JS --> 
+    <%= javascript_include_tag "vendor/modernizr-3.5.0.min.js" %>
   </head>
 
   <body>
+  <%= render "nav" %>
     <%= yield %>
   </body>
 </html>
