@@ -17,6 +17,7 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'mini_racer', platforms: :ruby
 # User Authinicate gem
 gem 'devise'
+gem 'activeadmin'
 
 # dotenv to  load environment variables
 gem 'dotenv-rails', groups: [:development, :test]
