@@ -17,7 +17,10 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'mini_racer', platforms: :ruby
 # User Authinicate gem
 gem 'devise'
-
+gem 'activeadmin'
+gem 'cancancan'
+gem 'draper'
+gem 'pundit'
 # dotenv to  load environment variables
 gem 'dotenv-rails', groups: [:development, :test]
 
@@ -74,3 +77,4 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 
+#User defined
