@@ -13,4 +13,4 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 Rails.application.config.assets.precompile += %w(  bootstrap.min.js main.js owl.carousel.min.js slick.min.js plugins.js  bootstrap.min.css style.css core.css custom.css
- responsive.css owl.carousel.min.css owl.theme.default.min.css waypoints.min.js  vendor/* shortcode/shortcodes.css  )
+ responsive.css owl.carousel.min.css owl.theme.default.min.css waypoints.min.js  vendor/* shortcode/shortcodes.css login.css )

@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
   resources :carts
-=======
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
->>>>>>> 73300f3e1d537ded7ebeb88c93ec027b01abaa45
   resources :roles
   resources :coupons
   resources :orders
