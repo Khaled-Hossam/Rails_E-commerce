@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :carts
   resources :roles
   resources :coupons
   resources :orders
@@ -11,7 +12,6 @@ Rails.application.routes.draw do
   get 'home/index'
   resources :brands
   resources :categories
-  resources :cart_products
 
   devise_for :users
 
