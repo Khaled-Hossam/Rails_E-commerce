@@ -1,7 +1,8 @@
-ActiveAdmin.register Store do
+ActiveAdmin.register User do
 
-permit_params :name, :summary
 
+permit_params :isActive
+#
 # or
 #
 # permit_params do
@@ -9,8 +10,5 @@ permit_params :name, :summary
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-#
-
-
 
 end

@@ -11,5 +11,8 @@ permit_params :name
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+# action_item :view, only: :show do
+#   link_to 'View on site'
+# end
 
 end

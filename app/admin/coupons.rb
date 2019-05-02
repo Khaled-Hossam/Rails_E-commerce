@@ -11,5 +11,8 @@ permit_params :name, :expiration_date, :max_usage_number, :discount_percentage, 
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+#
+
+
 
 end
