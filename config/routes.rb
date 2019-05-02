@@ -13,7 +13,10 @@ Rails.application.routes.draw do
   resources :categories
   resources :cart_products
 
-  devise_for :users
+  devise_for :users do
+    get 'users/sign_up', to: 'users/registrations/new#create'
+  end
+  
 
   root 'home#index'
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
