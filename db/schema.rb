@@ -66,14 +66,6 @@ ActiveRecord::Schema.define(version: 2019_05_02_123415) do
     t.index ["name"], name: "index_brands_on_name", unique: true
   end
 
-  create_table "cart_products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "product_id"
-    t.bigint "user_id"
-    t.integer "quantity"
-    t.index ["product_id"], name: "index_cart_products_on_product_id"
-    t.index ["user_id"], name: "index_cart_products_on_user_id"
-  end
-
   create_table "carts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "product_id"
     t.bigint "user_id"
@@ -208,8 +200,6 @@ ActiveRecord::Schema.define(version: 2019_05_02_123415) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "cart_products", "products"
-  add_foreign_key "cart_products", "users"
   add_foreign_key "carts", "products"
   add_foreign_key "carts", "users"
   add_foreign_key "order_products", "orders"
