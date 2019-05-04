@@ -18,3 +18,29 @@
 //= require_tree .
 //= require jquery3
 
+console.log("JS")
+$(function(){
+    $(".add-to-cart").click(function() {
+        event.preventDefault()
+    });
+
+})
+
+function addToCart(id){
+
+    // $.ajax({
+    //     type: "POST",
+    //     url: "/carts/add",
+    //     data: {
+    //         product_id: id,
+    //     },
+    //     success: ()=>{
+    //         alert("added")
+    //     },
+    //   });
+    $.post('carts/add_product', {product_id: id}, function(response){ 
+      alert("success")
+    })
+
+console.log(id)
+}
