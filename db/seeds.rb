@@ -9,7 +9,16 @@
 
 require 'faker'
 
-puts Faker::ChuckNorris.fact
+
+devs = ['Tarek', 'Khaled', 'Nemr','Mira']
+sentence = Faker::ChuckNorris.fact
+sentence.gsub! 'Chuck Norris', devs[rand(0..3)]
+
+puts "="* sentence.length 
+puts sentence
+puts "="* sentence.length 
+
+
 # 10 
 categories = [
     'Shoes',
