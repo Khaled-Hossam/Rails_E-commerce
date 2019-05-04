@@ -57,9 +57,7 @@
   <div class="field">
     <%= form.label :store_id %>
     <%= form.select(:store_id ) do %>
-    <%  @stores.each do |l| -%>
-      <%= content_tag(:option, l.name, value: l.id) %>
-    <% end %>
+      <%= content_tag(:option, current_user.store.name, value: current_user.store.id) %>
     <% end %>
   </div>
 
