@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :carts
+  # resources :carts
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :roles
@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get 'home/index'
   resources :brands
   resources :categories
+
+  post 'carts/add_product'
 
   devise_for :users do
     get 'users/sign_up', to: 'users/registrations/new#create'
