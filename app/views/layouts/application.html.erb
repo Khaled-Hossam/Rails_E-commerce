@@ -19,8 +19,7 @@
 <%# </p> %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %> 
-     <%= javascript_include_tag 'application' %> 
-<#
+
 
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -49,7 +48,23 @@
     <!-- User style -->
     <%= stylesheet_link_tag "custom.css" %>
     <!-- Modernizr JS --> 
+
+    
     <%= javascript_include_tag "vendor/modernizr-3.5.0.min.js" %>
+       <!-- jquery latest version -->
+     <%= javascript_include_tag "vendor/jquery-3.2.1.min.js" %>
+    <!-- Bootstrap framework js -->
+     <%= javascript_include_tag "bootstrap.min.js" %>
+    <!-- All js plugins included in this file. -->
+     <%= javascript_include_tag "plugins.js" %>
+     <%= javascript_include_tag "slick.min.js" %>
+     <%= javascript_include_tag "owl.carousel.min.js" %>
+    <!-- Waypoints.min.js. -->
+    <%= javascript_include_tag "waypoints.min.js" %>
+    <!-- Main js file that contents all jQuery plugins activation. -->
+      <%= javascript_include_tag "main.js" %>
+     <%= javascript_include_tag 'application' %>
+
   </head>
 
   <body>
@@ -62,18 +77,7 @@
 
     <!-- Placed js at the end of the document so the pages load faster -->
 
-    <!-- jquery latest version -->
-     <%= javascript_include_tag "vendor/jquery-3.2.1.min.js" %>
-    <!-- Bootstrap framework js -->
-     <%= javascript_include_tag "bootstrap.min.js" %>
-    <!-- All js plugins included in this file. -->
-     <%= javascript_include_tag "plugins.js" %>
-     <%= javascript_include_tag "slick.min.js" %>
-     <%= javascript_include_tag "owl.carousel.min.js" %>
-    <!-- Waypoints.min.js. -->
-    <%= javascript_include_tag "waypoints.min.js" %>
-    <!-- Main js file that contents all jQuery plugins activation. -->
-        <%= javascript_include_tag "main.js" %>
+ 
 
 
 
