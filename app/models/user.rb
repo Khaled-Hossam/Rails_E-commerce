@@ -7,9 +7,13 @@ class User < ApplicationRecord
   has_one :store
   has_one :cart
 
+  accepts_nested_attributes_for :store
+
   def to_s
     self.email
   end
+
+
 
 
 end

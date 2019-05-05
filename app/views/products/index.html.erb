@@ -1,41 +1,60 @@
 <p id="notice"><%= notice %></p>
+<div style="padding:10px;margin-left:30px;text-transform:uppercase;
+">  
+  <h1 ><%= current_user.store.name%> </h1>
+  </div>
+  <!-- cart-main-area start -->
+        <div class="cart-main-area ptb--100 bg__white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <form action="#">               
+                            <div class="table-content table-responsive">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th class="product-thumbnail">Product</th>
+                                            <th class="product-name">name </th>
+                                            <th class="product-category">category</th>
+                                            <th class="product-brand">brand</th>
+                                            <th class="product-store">store</th>
+                                           <th class="product-actions">Actions</th>
 
-<h1>Products</h1>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                            <% current_user.store.products.each do |item| %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th>Instock quantity</th>
-      <th>Image</th>
-      <th>Category</th>
-      <th>Brand</th>
-      <th>Store</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%= product.description %></td>
-        <td><%= product.price %></td>
-        <td><%= product.instock_quantity %></td>
-        <td><%= product.image %></td>
-        <td><%= product.category %></td>
-        <td><%= product.brand %></td>
-        <td><%= product.store %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product_path(product), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Product', new_product_path %>
+                                        <tr>
+                                            <td class="product-thumbnail"><a href="#">
+                                          <% if item.image.attached? %>
+                                        <%= link_to (image_tag(item.image) if item.image.attached?), item %>
+                                        <% else %>
+                                        <%= link_to (image_tag "product/1.jpg" ), item %>
+                                        <% end %>                                            </a></td>
+                                            <td class="product-name"><%= item.name%></a>
+                                            </td>
+                                            <td class="product-category"><%=item.category.name%></td>
+                                            <td class="product-quantity"><%=item.brand.name %> </td>
+                                            <td class="product-subtotal"><%=item.store.name %></td>
+                                            <td >
+                                           <%= link_to 'Show', item ,class:'btn btn-primary' %>
+                                           <%= link_to 'Edit', edit_product_path(item),class:'btn btn-success' %>
+                                           <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-danger' %>
+                                            </td>
+                                        </tr>
+                                    <%end%>                                       
+                                    </tbody>
+                                </table>
+                                <%= link_to 'New Product', new_product_path,class:"btn btn-warning" %>
+                            </div>
+                      
+                                    </div>
+                                </div>
+                            </div>
+                        </form> 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- cart-main-area end -->
