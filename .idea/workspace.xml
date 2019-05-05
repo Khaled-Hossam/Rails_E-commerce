@@ -3,13 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="11aefc3f-59aa-4c6b-8bd5-704e6c9be12e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/stores.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/stores.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/admin/users.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/admin/users.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/stores_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/stores_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/admin/stores.rb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/store.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/store.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/user.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/stores/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/stores/_form.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/spring.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/spring.rb" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -28,37 +24,46 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/admin/users.rb">
+        <entry file="file://$PROJECT_DIR$/app/models/user.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5">
-              <caret line="9" selection-start-line="9" selection-end-line="15" selection-end-column="3" />
+            <state>
+              <caret column="6" selection-start-column="6" selection-end-column="6" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/admin/stores.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="19" column="8" lean-forward="true" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/user.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="14" lean-forward="true" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/store.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
+            <state relative-caret-position="45">
+              <caret line="3" selection-start-line="3" selection-end-line="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/admin/users.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="4" column="53" selection-start-line="4" selection-start-column="53" selection-end-line="4" selection-end-column="53" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/admin/stores.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/stores_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-203">
+              <caret line="42" selection-start-line="42" selection-end-line="42" />
             </state>
           </provider>
         </entry>
@@ -103,10 +108,10 @@
         <option value="$PROJECT_DIR$/app/views/stores/_form.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/stores_controller.rb" />
         <option value="$USER_HOME$/.rbenv/versions/2.6.1/lib/ruby/gems/2.6.0/gems/devise-4.6.2/app/controllers/devise/registrations_controller.rb" />
-        <option value="$PROJECT_DIR$/app/models/user.rb" />
         <option value="$PROJECT_DIR$/app/admin/users.rb" />
-        <option value="$PROJECT_DIR$/app/models/store.rb" />
+        <option value="$PROJECT_DIR$/app/models/user.rb" />
         <option value="$PROJECT_DIR$/app/admin/stores.rb" />
+        <option value="$PROJECT_DIR$/app/models/store.rb" />
       </list>
     </option>
   </component>
@@ -127,7 +132,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="RailsProjectView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -150,43 +155,19 @@
               <item name="Rails_E-commerce" type="b2602c69:ProjectViewProjectNode" />
               <item name="Rails_E-commerce" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Rails_E-commerce" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Rails_E-commerce" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Rails_E-commerce" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
-            <path>
-              <item name="Rails_E-commerce" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="devise (v4.6.2, rbenv: 2.6.1) [gem]" type="70bed36:NamedLibraryElementNode" />
-            </path>
-            <path>
-              <item name="Rails_E-commerce" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="devise (v4.6.2, rbenv: 2.6.1) [gem]" type="70bed36:NamedLibraryElementNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Rails_E-commerce" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="devise (v4.6.2, rbenv: 2.6.1) [gem]" type="70bed36:NamedLibraryElementNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Rails_E-commerce" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="devise (v4.6.2, rbenv: 2.6.1) [gem]" type="70bed36:NamedLibraryElementNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-              <item name="devise" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="RailsProjectView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -330,18 +311,19 @@
       <workItem from="1556893078894" duration="3570000" />
       <workItem from="1556924709009" duration="7673000" />
       <workItem from="1556973795990" duration="10736000" />
-      <workItem from="1556984947621" duration="12064000" />
+      <workItem from="1556984947621" duration="12407000" />
+      <workItem from="1557065377011" duration="1388000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61652000" />
+    <option name="totallyTimeSpent" value="63383000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1366" y="0" width="1366" height="768" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28787878" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.29242423" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -354,7 +336,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49772727" visible="true" weight="0.4421875" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49772727" visible="true" weight="0.321875" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5022727" side_tool="true" weight="0.47847682" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.3294702" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -639,13 +621,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/stores_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/db/seeds.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2262" />
@@ -665,31 +640,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/store.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="8" selection-start-line="17" selection-start-column="8" selection-end-line="17" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/user.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="14" lean-forward="true" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
+        <state>
+          <caret column="6" selection-start-column="6" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/admin/users.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5">
-          <caret line="9" selection-start-line="9" selection-end-line="15" selection-end-column="3" />
+        <state relative-caret-position="15">
+          <caret line="4" column="53" selection-start-line="4" selection-start-column="53" selection-end-line="4" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/stores_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-203">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/admin/stores.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="19" column="8" lean-forward="true" selection-start-line="19" selection-start-column="8" selection-end-line="19" selection-end-column="8" />
+        <state relative-caret-position="150">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/store.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
