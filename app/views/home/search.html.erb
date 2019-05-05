@@ -1,0 +1,62 @@
+
+<!-- Start Category Area -->
+         <section class="htc__category__area ptb--100 ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="section__title--2 text-center">
+                            <h2 class="title__line">Search Results</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="htc__product__container " >
+                    <div class="row">
+                        <div class="product__list clearfix mt--40 ">
+                        <% if @results.blank? %>
+                        <div class="alert alert-danger" role="alert">
+                        <p style="font-size:20px;text-align:center;"> No Products Avaliable With That Name </p>
+                        </div>
+                            <% end %>
+
+                             <!-- Start Single Category -->  
+                              <% @results.each do |item|%> 
+                            <div class="col-md-6 col-lg-6 col-sm-4 col-xs-12  ">
+                               
+                                <div class="category" >
+                                    <div class="ht__cat__thumb" >
+                                        <% if item.image.attached? %>
+                                        <%= link_to (image_tag(item.image) if item.image.attached?), item %>
+                                        <% else %>
+                                        <%= link_to (image_tag "product/1.jpg" ), item %>
+
+
+                                        <% end %>
+                                            </a>
+                                        <div class="fr__hover__info">
+                                            <ul class="product__action">
+                                                <li><a href="wishlist.html"><i class="icon-heart icons"></i></a></li>
+
+                                                <li ><a class ="add-to-cart" onclick="addToCart(<%= item.id %>)" href="#"><i class="icon-handbag icons"></i></a></li>
+
+                                                <li><a href="#"><i class="icon-shuffle icons"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="fr__product__inner">
+                                            <h4><a href="product-details.html"> <%= item.name %></a></h4>
+                                            <ul class="fr__pro__prize">
+                                                <li>$ <%= item.price %></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>            
+                            </div>
+                                 <% end %>    
+                            <!-- End Single Category -->
+                        </div>
+                    </div> 
+                                                 
+                </div>
+            </div>
+        </section>
+        <!-- End Category Area -->
