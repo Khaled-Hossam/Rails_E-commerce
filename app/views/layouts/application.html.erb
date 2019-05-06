@@ -7,20 +7,9 @@
     <%= csp_meta_tag %>
 
 
-<%# <p class="navbar-text pull-right"> %>
-<%# <% if user_signed_in? %> 
-  <%# Logged in as <strong><%= current_user.email</strong> %>
-  <%# <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> 
-  <%# <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %> 
-<%# <% else %> 
-  <%# <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> 
-  <%# <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %> 
-<%# <% end %> 
-<%# </p> %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %> 
-     <%= javascript_include_tag 'application' %> 
-<#
+
+
 
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -50,9 +39,22 @@
     <%= stylesheet_link_tag "custom.css" %>
     <!-- Modernizr JS --> 
     <%= javascript_include_tag "vendor/modernizr-3.5.0.min.js" %>
+
+    <!-- jquery latest version -->
+     <%= javascript_include_tag "plugins.js",'data-turbolinks-track': 'reload' %>
+     <%= javascript_include_tag "slick.min.js",'data-turbolinks-track': 'reload' %>
+     <%= javascript_include_tag "owl.carousel.min.js",'data-turbolinks-track': 'reload' %>
+    <!-- Waypoints.min.js. -->
+    <%= javascript_include_tag "waypoints.min.js",'data-turbolinks-track': 'reload' %>
+    <!-- Main js file that contents all jQuery plugins activation. -->
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %> 
+ 
+        <script type="text/javascript" data-turbolinks-eval=false>
+        console.log("I'm only run once on the initial page load");
+    </script>
   </head>
 
-  <body>
+  <body data-turbolinks="false">
   <%= render "nav" %>
   <%= yield %>
   <%= render "footer" %>
@@ -60,22 +62,8 @@
     </div>
     <!-- Body main wrapper end -->
 
-    <!-- Placed js at the end of the document so the pages load faster -->
+    <%= javascript_include_tag "main.js" %>
 
-    <!-- jquery latest version -->
-     <%= javascript_include_tag "vendor/jquery-3.2.1.min.js" %>
-    <!-- Bootstrap framework js -->
-     <%= javascript_include_tag "bootstrap.min.js" %>
-    <!-- All js plugins included in this file. -->
-     <%= javascript_include_tag "plugins.js" %>
-     <%= javascript_include_tag "slick.min.js" %>
-     <%= javascript_include_tag "owl.carousel.min.js" %>
-    <!-- Waypoints.min.js. -->
-    <%= javascript_include_tag "waypoints.min.js" %>
-    <!-- Main js file that contents all jQuery plugins activation. -->
-        <%= javascript_include_tag "main.js" %>
-
-
-
+    <%= javascript_include_tag 'application' %> 
   </body>
 </html>
