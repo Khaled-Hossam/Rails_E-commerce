@@ -3,7 +3,7 @@ ActiveAdmin.register Coupon do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-# permit_params :list, :of, :attributes, :on, :model
+permit_params :name, :expiration_dat, :max_usage_number, :discount_percentage, :max_discount_amount
 #
 # or
 #
