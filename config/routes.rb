@@ -17,7 +17,6 @@ Rails.application.routes.draw do
 
   post 'carts/add_product'
   get '/search' => 'home#search', :as => 'search_page'
-
   devise_for :users do
     get 'users/sign_up', to: 'users/registrations/new#create'
   end
