@@ -17,6 +17,26 @@ Rails.application.routes.draw do
 
   post 'carts/add_product'
   get '/search' => 'home#search', :as => 'search_page'
+
+  scope '/me' do
+    get '/cart', to: 'cart#index'
+  end
+  
+  scope '/api/me' do
+    get '/cart/get' 
+    post '/cart/add_product'
+    get '/cart/update_product'
+    get '/cart/reomve_product'
+end
+
+  # scope '/me' do
+  #   get '/cart'
+  #   get '/wishlist'
+  #   get '/orders'
+  # end
+
+  
+
   devise_for :users do
     get 'users/sign_up', to: 'users/registrations/new#create'
   end

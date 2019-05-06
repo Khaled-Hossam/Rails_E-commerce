@@ -10,37 +10,71 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
+
+
+//= require jquery
+//= require jquery_ujs
+//= require bootstrap-sprockets
 //= require activestorage
 //= require turbolinks
-//= require jquery
-//= require bootstrap-sprockets
 //= require_tree .
-//= require jquery3
 
 console.log("JS")
+
+cart = {}
+
+
+function get_cart(){
+    $.ajax({
+        type: "GET",
+        url: "/api/me/cart/get",
+        success: (res)=>{
+            cart=res
+        },
+        error: ()=>{
+            // redirectTo("/users/sign_in");
+        }
+      });
+}
+
+
 $(function(){
     $(".add-to-cart").click(function() {
         event.preventDefault()
+        console.log('clicked')
     });
-
+    get_cart()
 })
 
-function addToCart(id){
 
-    // $.ajax({
-    //     type: "POST",
-    //     url: "/carts/add",
-    //     data: {
-    //         product_id: id,
-    //     },
-    //     success: ()=>{
-    //         alert("added")
-    //     },
-    //   });
-    $.post('carts/add_product', {product_id: id}, function(response){ 
-      alert("success")
-    })
-
-console.log(id)
+function redirectTo(url){
+    window.location.href = url;
 }
+
+function addSingleProductToCart(id){
+    $.ajax({
+        type: "POST",
+        url: "api/me/cart/add_product",
+            // e.preventDefault();
+        data: {
+            product_id: id,
+        },
+        success: (cart)=>{
+            $('.shopping__cart').addClass('shopping__cart__on');
+            $('.body__overlay').addClass('is-visible');
+        },
+        error: (error)=>{
+            console.log(error)
+            // redirectTo("/users/sign_in");
+        }
+      });
+}
+async function f(param) {
+    return Promise.resolve()
+  }
+cart ={}
+
+
+
+
+

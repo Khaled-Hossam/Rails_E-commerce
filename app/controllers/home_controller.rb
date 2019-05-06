@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @products=  Product.all
+    @products=  Product.limit(6)
   end
   def search  
     if params[:brand]
