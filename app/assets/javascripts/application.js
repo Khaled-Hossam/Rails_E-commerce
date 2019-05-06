@@ -19,3 +19,62 @@
 //= require turbolinks
 //= require_tree .
 
+console.log("JS")
+
+cart = {}
+
+
+function get_cart(){
+    $.ajax({
+        type: "GET",
+        url: "/api/me/cart/get",
+        success: (res)=>{
+            cart=res
+        },
+        error: ()=>{
+            // redirectTo("/users/sign_in");
+        }
+      });
+}
+
+
+$(function(){
+    $(".add-to-cart").click(function() {
+        event.preventDefault()
+        console.log('clicked')
+    });
+    get_cart()
+})
+
+
+function redirectTo(url){
+    window.location.href = url;
+}
+
+function addSingleProductToCart(id){
+    $.ajax({
+        type: "POST",
+        url: "api/me/cart/add_product",
+            // e.preventDefault();
+        data: {
+            product_id: id,
+        },
+        success: (cart)=>{
+            $('.shopping__cart').addClass('shopping__cart__on');
+            $('.body__overlay').addClass('is-visible');
+        },
+        error: (error)=>{
+            console.log(error)
+            // redirectTo("/users/sign_in");
+        }
+      });
+}
+async function f(param) {
+    return Promise.resolve()
+  }
+cart ={}
+
+
+
+
+
