@@ -10,6 +10,10 @@ class Cart < ApplicationRecord
     self.delete if self.quantity.zero? || self.quantity.negative?
   end
 
+  def product_name
+    self.product.name
+  end
+
 
   class << self
 

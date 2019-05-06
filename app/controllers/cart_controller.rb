@@ -2,7 +2,7 @@ class CartController < ApplicationController
     skip_before_action :verify_authenticity_token
     
     def index
-        @cart_product=Cart.find_all_products_in_user_cart(current_user)
+        @products=Cart.find_all_products_in_user_cart(current_user)
     end
 
     def get
