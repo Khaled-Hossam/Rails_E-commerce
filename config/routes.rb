@@ -4,7 +4,12 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   resources :roles
   resources :coupons
-  resources :orders
+  resources :orders do
+    patch :confirm
+    patch :deliver
+    put :confirm
+    put :deliver
+  end
   resources :ratings
   resources :states
   resources :order_products
