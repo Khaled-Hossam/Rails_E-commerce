@@ -309,7 +309,12 @@ $(function () {
             }
         });
     })
-})
 
+    const order = new function (){
+        this.coupon_name = null
+        this.order_products = 
+
+    }
+})
 
 
