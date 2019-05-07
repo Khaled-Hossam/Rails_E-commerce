@@ -53,11 +53,12 @@ function redirectTo(url){
 
 
 
-  $(function(){
+$(function(){
 
 
     const cart = new function(){
         this.products = []
+        this.last ={resp: null, action: null}
         
         // endpoint resource 
         this.resource = {
@@ -102,8 +103,9 @@ function redirectTo(url){
                 data: {
                     product_id: id,
                 },
-                success: (cart)=>{
-                    // this.fetch_products()
+                success: (resp)=>{
+                    this.last.resp = resp
+                    this.last.action = 'remove'
                     this.fetchAndNotifyAll()
                     callback()
                 },
@@ -121,7 +123,9 @@ function redirectTo(url){
                     product_id: product_id,
                     quantity: quantity,
                 },
-                success: (cart)=>{
+                success: (resp)=>{
+                    this.last.resp = resp
+                    this.last.action = 'update'
                     this.fetchAndNotifyAll()
 
                     callback()
@@ -138,7 +142,9 @@ function redirectTo(url){
                 data: {
                     product_id: product_id,
                 },
-                success: (cart)=>{
+                success: (resp)=>{
+                    this.last.resp = resp
+                    this.last.action = 'remove'
                     this.fetchAndNotifyAll()
 
                     callback()
@@ -170,6 +176,13 @@ function redirectTo(url){
             })
             return sum
         }
+        this.getTotalPrice = function(){        
+            let sum =0 
+            this.products.forEach((cp)=>{
+                sum += (cp.quantity * cp.product.price)
+            })
+            return sum
+        }
     }
     const cpTemplate = new function (){
         this.temp = $('.cp__mock__template').find('.shp__single__product')
@@ -184,6 +197,8 @@ function redirectTo(url){
         }
     }
 
+   
+
     const cartOverlay = new function(){
         this.products =[]
         this.show = function() {
@@ -194,6 +209,8 @@ function redirectTo(url){
         this.update = function(data){
 
                 $('.htc__qua').text( cart.getItemsCount())
+
+                $('.total__price').text(cart.getTotalPrice())
                 
                 $('.shp__cart__wrap').empty()
                 data.forEach(function(item){
@@ -221,7 +238,6 @@ function redirectTo(url){
             this.show()
         }
         this.notify = (products)=>{
-            console.log('Notified ', products)
             this.update(products)
         }
         this.init = function (){
@@ -244,13 +260,31 @@ function redirectTo(url){
             node = node.parentNode
         product_id = node.getAttribute('product_id')
         cart.add_product(product_id, ()=>{
-            // cartOverlay.show()     
-            // cartOverlay.updateNumber()
+            cartOverlay.show()     
         })
     });
     
     
 /// cart page ============================= 
+
+
+const cartTable = new function(){
+    this.update = function(){
+        // console.log('cart.last.resp.product.id', cart.last.resp.product.id)
+        if(cart.last.action === 'remove'){
+            $(`tr[product_id^='${cart.last.resp.product.id}']`).remove()
+            console.log($(`tr[product_id^='${cart.last.resp.product.id}']`))
+        }
+       
+    }
+    cart.subscribe(this)
+
+    this.notify = ()=>{
+        this.update()
+    }
+}
+
+
 $('.select__quantity').click(()=>{
     let product_node = event.target.parentNode.parentNode
     let product_id = product_node.getAttribute('product_id') 
@@ -263,9 +297,6 @@ $('.select__quantity').click(()=>{
      })
     
 })
-
-
-
 
     $(".product-remove").click(function(){
     let product_node = event.target.parentNode

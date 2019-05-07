@@ -18,31 +18,33 @@
                                     <th class="product-remove">Remove</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class"cp__table">
                             <% @products.each do |item|%> 
-                                <tr product_id="<%= item.product_id %>" >
-                                    <td class="product-thumbnail"><a href="#"><img src="images/product-2/cart-img/1.jpg" alt="product img" /></a></td>
-                                    <td class="product-name"><a href="#"><%= item.product_name %></a>
-                                    </td>
-                                    <td class="product-price"><span class="amount"><%= item.product_price %></span></td>
-                                    <td class="product-quantity">
-                                        <select class="select__quantity" default=item.quantity > 
-                                        <% 1.upto(item.product_instock_quantity) do |n| %>
-                                            <% if n == item.quantity%>
-                                                <option selected> <%= n %></option>
-                                            <% else %>
-                                                <option> <%= n %></option>
+                                <span class="cp__row"> 
+                                    <tr product_id="<%= item.product_id %>" >
+                                        <td class="product-thumbnail"><a href="#"><img src="images/product-2/cart-img/1.jpg" alt="product img" /></a></td>
+                                        <td class="product-name"><a href="#"><%= item.product_name %></a>
+                                        </td>
+                                        <td class="product-price"><span class="amount"><%= item.product_price %></span></td>
+                                        <td class="product-quantity">
+                                            <select class="select__quantity" default=item.quantity > 
+                                            <% 1.upto(item.product_instock_quantity) do |n| %>
+                                                <% if n == item.quantity%>
+                                                    <option selected> <%= n %></option>
+                                                <% else %>
+                                                    <option> <%= n %></option>
+                                                <% end %>
                                             <% end %>
-                                        <% end %>
-                                        </select></td>
+                                            </select></td>
 
-                                    <td >$<span class="product-subtotal "><%= item.product_price * item.quantity %> </span></td>
-                                    <td class="product-remove">
-                                        <a href="#">
-                                            <i class="icon-trash icons"></i>
-                                        </a>
-                                    </td>
-                                </tr>
+                                        <td >$<span class="product-subtotal "><%= item.product_price * item.quantity %> </span></td>
+                                        <td class="product-remove">
+                                            <a href="#">
+                                                <i class="icon-trash icons"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </span>
                                <% end %>
                             </tbody>
                         </table>
