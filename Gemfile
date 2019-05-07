@@ -77,3 +77,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+
+# gem for authorization
+gem 'cancancan'
