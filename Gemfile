@@ -31,6 +31,7 @@ gem 'autoprefixer-rails'
 gem 'sprockets-rails'
 gem "font-awesome-rails"
 
+
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -80,3 +81,5 @@ gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 
 # gem for authorization
 gem 'cancancan'
+
+gem 'active_model_serializers', '~> 0.10.0'

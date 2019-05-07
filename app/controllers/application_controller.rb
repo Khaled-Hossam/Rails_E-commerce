@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 def items
   @categories=Category.all
   @brands = Brand.all
+  @stores = Store.all
 end
         # Prevent CSRF attacks by raising an exception.
         protect_from_forgery with: :exception

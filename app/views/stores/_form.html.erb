@@ -12,16 +12,23 @@
   <% end %>
 
   <div class="field">
+    <%= form.label :user_id %>
+    <%= form.select :user_id, options_for_select(User.all.map{|s|[s.name, s.id]}) %>
+    %>
+  </div>
+
+
+  <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name , class:"form-control"%>
   </div>
 
   <div class="field">
     <%= form.label :summary %>
-    <%= form.text_area :summary %>
+    <%= form.text_area :summary , class:"form-control"%>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+ <div class="actions" style="padding:10px;">
+    <%= form.submit :Submit, class: 'btn btn-lg btn-primary' %>
   </div>
 <% end %>

@@ -40,6 +40,7 @@ class StoresController < ApplicationController
   # PATCH/PUT /stores/1
   # PATCH/PUT /stores/1.json
   def update
+
     respond_to do |format|
       if @store.update(store_params)
         format.html { redirect_to @store, notice: 'Store was successfully updated.' }

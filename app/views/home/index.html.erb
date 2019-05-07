@@ -26,8 +26,12 @@
                                 </div>
                             </div>
                             <div class="col-lg-6 col-sm-5 col-xs-12 col-md-5">
-                                <div class="slide__thumb">
-                                <%= link_to (image_tag(item.image) if item.image.attached?), item %>
+                                <div class="slide__thumb">+
+                                    <% if item.image.attached? %>
+                                        <%= link_to (image_tag(item.image) ), item %>
+                                    <% else %>
+                                        <%= link_to (image_tag "product-2/big-img/1.jpg" ), item %>
+                                    <% end %>
                                 </div>
                             </div>
                         </div>
@@ -61,24 +65,30 @@
                                
                                 <div class="category" >
                                     <div class="ht__cat__thumb" >
-                                <%= link_to (image_tag(item.image) if item.image.attached?), item %>
-                                        </a>
-                                    <div class="fr__hover__info">
-                                        <ul class="product__action">
-                                            <li><a href="wishlist.html"><i class="icon-heart icons"></i></a></li>
+                                        <% if item.image.attached? %>
+                                        <%= link_to (image_tag(item.image) if item.image.attached?), item %>
+                                        <% else %>
+                                        <%= link_to (image_tag "product/1.jpg" ), item %>
 
-                                            <li><a href="cart.html"><i class="icon-handbag icons"></i></a></li>
 
-                                            <li><a href="#"><i class="icon-shuffle icons"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="fr__product__inner">
-                                        <h4><a href="product-details.html"> <%= item.name %></a></h4>
-                                        <ul class="fr__pro__prize">
-                                            <li class="old__prize">$500</li>
-                                            <li>$ <%= item.price %></li>
-                                        </ul>
-                                    </div>
+                                        <% end %>
+                                            </a>
+                                        <div class="fr__hover__info">
+                                            <ul class="product__action">
+                                                <li><a href="wishlist.html"><i class="icon-heart icons"></i></a></li>
+
+                                                <li ><a class ="add-to-cart" onclick="addSingleProductToCart(<%= item.id %>)" href="#"><i class="icon-handbag icons"></i></a></li>
+
+                                                <li><a href="#"><i class="icon-shuffle icons"></i></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="fr__product__inner">
+                                            <h4><a href="product-details.html"> <%= item.name %></a></h4>
+                                            <ul class="fr__pro__prize">
+                                                <li class="old__prize">$500</li>
+                                                <li>$ <%= item.price %></li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>            
                             </div>
@@ -568,4 +578,4 @@
         <!-- End Blog Area -->
         <!-- End Banner Area -->
         <!-- Start Footer Area -->
-       
+    </div>

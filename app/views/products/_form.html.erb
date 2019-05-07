@@ -13,45 +13,55 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name ,class:"form-control form-control-lg"%>
   </div>
 
-  <div class="field">
+  <div class="field ">
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, class:"form-control form-control-lg" %>
   </div>
 
   <div class="field">
     <%= form.label :price %>
-    <%= form.text_field :price %>
+    <%= form.number_field :price,class:"form-control" %>
   </div>
 
   <div class="field">
     <%= form.label :instock_quantity %>
-    <%= form.number_field :instock_quantity %>
+    <%= form.number_field :instock_quantity ,class:"form-control"%>
   </div>
 
   <div class="field">
     <%= form.label :image %>
-    <%=  form.file_field :image %>
+    <%=  form.file_field :image ,class:"form-control-file"  %>
   </div>
 
   <div class="field">
-    <%= form.label :category_id %>
-    <%= form.text_field :category_id %>
+  <%= form.label :category_id %>
+  <%= form.select(:category_id,class:"dropdown-menu") do %>
+    <%  @categories.each do |l| -%>
+      <%= content_tag(:option, l.name, value: l.id) %>
+    <% end %>
+<% end %>
   </div>
 
   <div class="field">
     <%= form.label :brand_id %>
-    <%= form.text_field :brand_id %>
+      <%= form.select(:brand_id,class:"dropdown-menu" ) do %>
+    <%  @brands.each do |l| -%>
+      <%= content_tag(:option, l.name, value: l.id) %>
+    <% end %>
+    <% end %>
   </div>
 
   <div class="field">
     <%= form.label :store_id %>
-    <%= form.text_field :store_id %>
+    <%= form.select(:store_id ) do %>
+      <%= content_tag(:option, current_user.store.name, value: current_user.store.id) %>
+    <% end %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions" style="padding:10px;">
+    <%= form.submit :Submit, class: 'btn btn-lg btn-primary' %>
   </div>
 <% end %>
