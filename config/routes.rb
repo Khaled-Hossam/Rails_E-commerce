@@ -39,6 +39,9 @@ end
   devise_for :users do
     get 'users/sign_up', to: 'users/registrations/new#create'
   end
+
+  #to change the rails error page when route doessn't match
+  get '*unmatched_route', to: 'home#not_found'
   
 
   root 'home#index'
