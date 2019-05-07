@@ -72,5 +72,12 @@ class Cart < ApplicationRecord
     def clear_user_cart(user)
       find_all_products_in_user_cart(user).delete_all
     end
+
+    def get_total_price(user)
+      Cart.find_all_products_in_user_cart(user).inject(0){ | acc , cp |
+        acc+cp.product_price * cp.quantity 
+      }
+    end
+
   end
 end

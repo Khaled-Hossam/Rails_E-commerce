@@ -12,3 +12,7 @@
 .cp__name{
   text-transform: uppercase
 }
+
+.order__total__value::before{
+  content:"$"
+}

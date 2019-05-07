@@ -57,10 +57,6 @@
                                 <%= link_to "Continue Shopping", root_path %></li>
 
                                 </div>
-                                <div class="buttons-cart checkout--btn">
-                                    <a href="#">update</a>
-                                    <a href="#">checkout</a>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -82,21 +78,22 @@
                                 <div class="cart__desk__list">
                                     <ul class="cart__desc">
                                         <li>cart total</li>
-                                        <li>tax</li>
-                                        <li>shipping</li>
+                                        <li>discount</li>
+                                        
                                     </ul>
                                     <ul class="cart__price">
-                                        <li>$909.00</li>
+                                        <li >$<span class="cart__total__value"><%= @cart_price %></span></li>
                                         <li>$9.00</li>
-                                        <li>0</li>
+                                        
                                     </ul>
                                 </div>
                                 <div class="cart__total">
                                     <span>order total</span>
-                                    <span>$918.00</span>
+                                    
+                                    <span class="order__total__value"> <%= @cart_price %> </span>
                                 </div>
                                 <ul class="payment__btn">
-                                    <li class="active"><a href="#">payment</a></li>
+                                    <li class="active"><a href="#">Place order</a></li>
                                 <li><%= link_to "Continue Shopping", root_path %></li></li>
                                 </ul>
                             </div>

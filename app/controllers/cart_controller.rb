@@ -3,6 +3,7 @@ class CartController < ApplicationController
     
     def index
         @products=Cart.find_all_products_in_user_cart(current_user)
+        @cart_price = Cart.get_total_price(current_user)
     end
 
     def get_products
