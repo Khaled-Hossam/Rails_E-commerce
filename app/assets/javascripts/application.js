@@ -20,30 +20,6 @@
 //= require_tree .
 
 
-// cart = {}
-
-
-// function get_cart(){
-//     $.ajax({
-//         type: "GET",
-//         url: "/api/me/cart/get",
-//         success: (res)=>{
-//             cart=res
-//         },
-//         error: ()=>{
-//             // redirectTo("/users/sign_in");
-//         }
-//       });
-// }
-
-
-// $(function(){
-//     $(".add-to-cart").click(function() {
-//         event.preventDefault()
-//     });
-//     get_cart()
-// })
-
 
 function redirectTo(url){
     window.location.href = url;
@@ -91,7 +67,7 @@ $(function(){
                     callback(res)
                 },
                 error: ()=>{
-                    // redirectTo("/users/sign_in");
+                    redirectTo("/users/sign_in");
                 }
               });
         }
@@ -110,7 +86,7 @@ $(function(){
                     callback()
                 },
                 error: (error)=>{
-                    
+                    redirectTo("/users/sign_in");
                 }
               });
         }
@@ -150,6 +126,7 @@ $(function(){
                     callback()
                 },
                 error: (error)=>{
+                    
                 }
               });
         }
