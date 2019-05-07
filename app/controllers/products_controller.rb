@@ -1,4 +1,7 @@
 class ProductsController < ApplicationController
+  #for cancan authorization
+  load_and_authorize_resource
+
   before_action :set_product, only: [:show, :edit, :update, :destroy] 
   # GET /products
   # GET /products.json
@@ -16,6 +19,7 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    authorize! :create, @product
   end
 
   # GET /products/1/edit
