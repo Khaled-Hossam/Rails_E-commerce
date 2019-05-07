@@ -11,6 +11,7 @@ class Ability
       # can :read, Post, user_id: user.id
       if user.role == "seller"
         can :create, Product
+        can :read, Order
       end
 
       # if user.admin?  # additional permissions for administrators
