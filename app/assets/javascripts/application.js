@@ -19,61 +19,232 @@
 //= require turbolinks
 //= require_tree .
 
-console.log("JS")
 
-cart = {}
-
-
-function get_cart(){
-    $.ajax({
-        type: "GET",
-        url: "/api/me/cart/get",
-        success: (res)=>{
-            cart=res
-        },
-        error: ()=>{
-            // redirectTo("/users/sign_in");
-        }
-      });
-}
+// cart = {}
 
 
-$(function(){
-    $(".add-to-cart").click(function() {
-        event.preventDefault()
-        console.log('clicked')
-    });
-    get_cart()
-})
+// function get_cart(){
+//     $.ajax({
+//         type: "GET",
+//         url: "/api/me/cart/get",
+//         success: (res)=>{
+//             cart=res
+//         },
+//         error: ()=>{
+//             // redirectTo("/users/sign_in");
+//         }
+//       });
+// }
+
+
+// $(function(){
+//     $(".add-to-cart").click(function() {
+//         event.preventDefault()
+//     });
+//     get_cart()
+// })
 
 
 function redirectTo(url){
     window.location.href = url;
 }
 
-function addSingleProductToCart(id){
-    $.ajax({
-        type: "POST",
-        url: "api/me/cart/add_product",
-            // e.preventDefault();
-        data: {
-            product_id: id,
-        },
-        success: (cart)=>{
-            $('.shopping__cart').addClass('shopping__cart__on');
-            $('.body__overlay').addClass('is-visible');
-        },
-        error: (error)=>{
-            console.log(error)
-            // redirectTo("/users/sign_in");
-        }
-      });
-}
-async function f(param) {
-    return Promise.resolve()
-  }
-cart ={}
 
+
+
+
+  $(function(){
+
+
+    const cart = new function(){
+        this.products = []
+        
+        // endpoint resource 
+        this.resource = {
+            'get_products': {
+                'type': 'GET',
+                'url': "/api/me/cart/get_products",
+            },
+            'add_product' : {
+                'type': "POST",
+                'url': "api/me/cart/add_product",
+            },
+            'update_product':{
+                type: "PUT",
+                url: "/api/me/cart/update_product",
+            },
+            'remove_product':{
+                type: "DELETE",
+                url: "/api/me/cart/remove_product",
+            }
+        }
+
+        
+
+        this.fetch_products = function (callback){
+            
+            $.ajax({
+                ... this.resource.get_products,
+                success: (res)=>{
+                    callback(res)
+                    this.products = res
+                },
+                error: ()=>{
+                    // redirectTo("/users/sign_in");
+                }
+              });
+        }
+        
+        
+        this.add_product = function(id, callback){
+            $.ajax({
+                ... this.resource.add_product,
+                data: {
+                    product_id: id,
+                },
+                success: (cart)=>{
+                    // this.fetch_products()
+                    callback()
+                },
+                error: (error)=>{
+                    
+                }
+              });
+        }
+
+        
+         this.update_product = function(product_id, quantity, callback){
+            $.ajax({
+                ... this.resource.update_product,
+                data: {
+                    product_id: product_id,
+                    quantity: quantity,
+                },
+                success: (cart)=>{
+                    // this.fetch_products()
+                    callback()
+                },
+                error: (error)=>{
+                }
+              });
+        }
+       
+
+        this.remove_product = function(product_id , callback){
+            $.ajax({
+                ... this.resource.remove_product,
+                data: {
+                    product_id: product_id,
+                },
+                success: (cart)=>{
+                    // this.fetch_products()
+                    callback()
+                },
+                error: (error)=>{
+                }
+              });
+        }
+    }
+    const cpTemplate = new function (){
+        this.temp = $('.cp__mock__template').find('.shp__single__product')
+
+        this.generateFor = function(id, name, price, quantity){
+            t =  this.temp.clone()
+            $(t).attr('product_id',id)
+            t.find('.cp__name').text(name)
+            t.find('.cp__subtotal__price').text(quantity * price)
+            t.find('.cp__quantity').text(quantity)      
+            return t
+        }
+    }
+
+    const cartOverlay = new function(){
+        this.products =[]
+        this.show = function() {
+            $('.shopping__cart').addClass('shopping__cart__on')
+            $('.body__overlay').addClass('is-visible')
+        }
+
+        this.update = function(){
+            this.products = cart.fetch_products((data) => {
+                this.products = data
+                $('.shp__cart__wrap').empty()
+                data.forEach(function(item){
+                    $('.shp__cart__wrap').append(
+                            cpTemplate.generateFor(
+                                item.product.id,
+                                item.product.name,
+                                item.product.price,
+                                 item.quantity)
+                        )
+                })
+                $('.remove__cp').click(function(){
+                    event.preventDefault()
+                    let node =$(event.target).parents('.shp__single__product') 
+                    let product_id =  node.attr('product_id')
+                    console.log('product_id', product_id)
+                    cart.remove_product(product_id, function(){
+                        $(node).remove()
+                    })
+                })
+            })
+        }
+
+        this.updateAndShow = function(){
+            this.update()
+            this.show()
+        }
+    }
+    cartOverlay.update()
+
+    $(".add_to_cart").click(function() {
+        event.preventDefault()
+        node = event.target
+        if($(node).is('i'))
+            node = node.parentNode
+        product_id = node.getAttribute('product_id')
+        cart.add_product(product_id, ()=>{
+            cartOverlay.updateAndShow()     
+        })
+    });
+    
+    
+/// cart page ============================= 
+$('.select__quantity').click(()=>{
+    let product_node = event.target.parentNode.parentNode
+    let product_id = product_node.getAttribute('product_id') 
+    let quantity =event.target.value 
+    let product_price = $(product_node).find('.product-price').text()
+    
+    
+    cart.update_product(product_id ,quantity,function() { 
+        $(product_node).find('.product-subtotal').text(product_price * quantity)
+     })
+    
+})
+
+
+
+
+    $(".product-remove").click(function(){
+    let product_node = event.target.parentNode
+    if($(product_node).is('a'))
+        product_node = product_node.parentNode.parentNode
+    
+    let product_id = product_node.getAttribute('product_id') 
+    cart.remove_product(product_id, ()=>{
+        $(product_node).remove()
+    })
+
+  });
+  
+
+  $('.cart__menu').on('click', function(e) {
+        $('.shopping__cart').addClass('shopping__cart__on');
+        $('.body__overlay').addClass('is-visible');
+  })
+
+})
 
 
 

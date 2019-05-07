@@ -2042,6 +2042,23 @@ select.select__size {
     padding-right: 16px;
 }
 
+select.select__quantity {
+    border: 1px solid #afafaf;
+    color: #afafaf;
+    height: 20px;
+    margin-left: 10px;
+    width: 41px;
+    padding: 0 4px;
+}
+
+select.select__quantity {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    background: rgba(0, 0, 0, 0) url("images/icons/select-option.png") no-repeat scroll 87% 7px / 10px 5px;
+    padding-right: 16px;
+}
 
 
 /*---------------------------------------

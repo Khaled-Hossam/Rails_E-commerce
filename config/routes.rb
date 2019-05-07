@@ -22,10 +22,10 @@ Rails.application.routes.draw do
   end
   
   scope '/api/me' do
-    get '/cart/get' 
+    get '/cart/get_products' 
     post '/cart/add_product'
-    get '/cart/update_product'
-    get '/cart/reomve_product'
+    put '/cart/update_product'
+    delete '/cart/remove_product'
 end
 
   # scope '/me' do

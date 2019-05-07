@@ -20,18 +20,28 @@
                             </thead>
                             <tbody>
                             <% @products.each do |item|%> 
-                                <tr>
+                                <tr product_id="<%= item.product_id %>" >
                                     <td class="product-thumbnail"><a href="#"><img src="images/product-2/cart-img/1.jpg" alt="product img" /></a></td>
                                     <td class="product-name"><a href="#"><%= item.product_name %></a>
-                                        <ul  class="pro__prize">
-                                            <li class="old__prize">$82.5</li>
-                                            <li>$75.2</li>
-                                        </ul>
                                     </td>
-                                    <td class="product-price"><span class="amount">£165.00</span></td>
-                                    <td class="product-quantity"><input type="number" value="1" /></td>
-                                    <td class="product-subtotal">£165.00</td>
-                                    <td class="product-remove"><a href="#"><i class="icon-trash icons"></i></a></td>
+                                    <td class="product-price"><span class="amount"><%= item.product_price %></span></td>
+                                    <td class="product-quantity">
+                                        <select class="select__quantity" default=item.quantity > 
+                                        <% 1.upto(item.product_instock_quantity) do |n| %>
+                                            <% if n == item.quantity%>
+                                                <option selected> <%= n %></option>
+                                            <% else %>
+                                                <option> <%= n %></option>
+                                            <% end %>
+                                        <% end %>
+                                        </select></td>
+
+                                    <td >$<span class="product-subtotal "><%= item.product_price * item.quantity %> </span></td>
+                                    <td class="product-remove">
+                                        <a href="#">
+                                            <i class="icon-trash icons"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                                <% end %>
                             </tbody>
