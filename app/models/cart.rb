@@ -10,13 +10,25 @@ class Cart < ApplicationRecord
     self.delete if self.quantity.zero? || self.quantity.negative?
   end
 
+  def product_id
+    self.product.id
+  end
+  
   def product_name
     self.product.name
   end
 
+  def product_price
+    self.product.price
+  end
+
+  def product_instock_quantity
+    self.product.instock_quantity
+  end
+
+
 
   class << self
-
     def add_or_update_single_product_to_user_cart(product, user)
       if find_product_in_user_cart(product, user).present? 
         return increment_product_cart_quantity(product, user)
@@ -62,5 +74,12 @@ class Cart < ApplicationRecord
     def clear_user_cart(user)
       find_all_products_in_user_cart(user).delete_all
     end
+
+    def get_total_price(user)
+      Cart.find_all_products_in_user_cart(user).inject(0){ | acc , cp |
+        acc+cp.product_price * cp.quantity 
+      }
+    end
+
   end
 end

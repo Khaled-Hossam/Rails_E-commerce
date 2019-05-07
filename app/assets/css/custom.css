@@ -8,3 +8,11 @@
 /* ----------------------------------------------------
 	You can put your custom css code here: 
 -------------------------------------------------------*/
+
+.cp__name{
+  text-transform: uppercase
+}
+
+.order__total__value::before{
+  content:"$"
+}

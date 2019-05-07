@@ -1,10 +1,12 @@
 class OrdersController < ApplicationController
+  load_and_authorize_resource
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+    @orders = Order.get_orders_for_current_user(current_user)
+    # @items = Order.get_items_in_order_for_user(@orders.id)
   end
 
   # GET /orders/1
@@ -59,6 +61,21 @@ class OrdersController < ApplicationController
       format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def confirm
+    # byebug
+    @order=Order.where(id: params[:order_id])
+    @order.update(state_id: "1")
+    redirect_to request.referrer
+  end
+
+  def deliver
+    @order=Order.where(id: params[:order_id])
+    @order.update(state_id: "3")
+    # byebug
+    redirect_to request.referrer
+
   end
 
   private

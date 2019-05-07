@@ -1,31 +1,58 @@
 <p id="notice"><%= notice %></p>
+<div style="padding:10px;margin-left:30px;text-transform:uppercase;
+">
+  <h1 ><%= current_user.store.name%> </h1>
+</div>
+<!-- cart-main-area start -->
+<div class="cart-main-area ptb--100 bg__white">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <form action="#">
+          <div class="table-content table-responsive">
+            <table>
+              <thead>
+              <tr>
+                <th class="product-thumbnail">Order Id</th>
+                <th class="product-name">Order Date </th>
+                <th class="product-category">Itmes </th>
+                <th class="product-brand">Items Quantity</th>
+                <th class="product-store">Order Status</th>
+                <th class="product-actions">Actions</th>
 
-<h1>Orders</h1>
+              </tr>
+              </thead>
+              <tbody>
+              <% @orders.each do |order| %>
 
-<table>
-  <thead>
-    <tr>
-      <th>State</th>
-      <th>User</th>
-      <th>Coupon</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+                <tr>
+                  <td class="product-category"><%=order.id%></td>
+                  <td class="product-category"><%=order.created_at%></td>
+                       <%order.order_products.each do |item| %>
+                    <td>
+                    <table>
+                  <td  class="product-quantity"><%=item.product.name %> </td>
+                  <td class="product-quantity"><%=item.product.instock_quantity %> </td>
+                  <td class="product-subtotal"><%=item.state.name %></td>
+                    </table>
+                    </td>
+                  <%end %>
+                  <td class="product-subtotal"><%=order.state.name %></td>
 
-  <tbody>
-    <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.state %></td>
-        <td><%= order.user %></td>
-        <td><%= order.coupon %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Order', new_order_path %>
+                  <td >
+                    <%= link_to 'Confirm', order_confirm_path(order.id),method: :put ,class:'btn btn-primary' %>
+                    <%= link_to 'Deliver', order_deliver_path(order.id),method: :put ,class:'btn btn-primary' %>
+                  </td>
+                </tr>
+              <%end%>
+              </tbody>
+            </table>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>

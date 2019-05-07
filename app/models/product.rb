@@ -4,6 +4,8 @@ class Product < ApplicationRecord
   belongs_to :category
   belongs_to :brand
   belongs_to :store
+  belongs_to :order_product
+
   
   class << self
     def filter_by_store(store)
