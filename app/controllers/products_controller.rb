@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   #for cancan authorization
-  load_and_authorize_resource
+  load_and_authorize_resource :only => :new
 
   before_action :set_product, only: [:show, :edit, :update, :destroy] 
   # GET /products
