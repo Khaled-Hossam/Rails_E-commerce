@@ -203,7 +203,6 @@ $(function () {
                 event.preventDefault()
                 let node = $(event.target).parents('.shp__single__product')
                 let product_id = node.attr('product_id')
-                console.log('product_id', product_id)
                 cart.remove_product(product_id, function () {
                     $(node).remove()
                 })
@@ -218,10 +217,8 @@ $(function () {
             this.update(products)
         }
         this.init = function () {
-            console.log('init called');
 
             cart.fetch_products((data) => {
-                console.log('fetch cb', data);
                 this.update(data)
             })
         }
@@ -246,10 +243,8 @@ $(function () {
 
     const cartTable = new function () {
         this.update = function () {
-            // console.log('cart.last.resp.product.id', cart.last.resp.product.id)
             if (cart.last.action === 'remove') {
                 $(`tr[product_id^='${cart.last.resp.product.id}']`).remove()
-                console.log($(`tr[product_id^='${cart.last.resp.product.id}']`))
             }
 
             $('.order__total__value').text(cart.getTotalPrice())
@@ -292,6 +287,28 @@ $(function () {
         $('.body__overlay').addClass('is-visible');
     })
 
+
+    //// COUPONS ---------------------------
+
+    $('.validate__coupon').click( function(){
+        event.preventDefault()
+        $.ajax({
+            type: 'GET',
+            url: '/api/me/coupons/check',
+            data: {
+                coupon_name: $('.coupon__name').val(),
+            },
+            success: (resp) => {
+                if(resp)
+                    $('.coupon__message').text('Coupon accepted')
+                else 
+                    $('.coupon__message').text('Invalid Coupon')
+            },
+            error: (error) => {
+
+            }
+        });
+    })
 })
 
 

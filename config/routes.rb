@@ -20,12 +20,17 @@ Rails.application.routes.draw do
   scope '/me' do
     get '/cart', to: 'cart#index'
   end
-  
-  scope '/api/me' do
-    get '/cart/get_products' 
-    post '/cart/add_product'
-    put '/cart/update_product'
-    delete '/cart/remove_product'
+
+  scope '/api' do
+    
+    
+    scope '/me' do
+      get '/coupons/check'  
+      get '/cart/get_products' 
+      post '/cart/add_product'
+      put '/cart/update_product'
+      delete '/cart/remove_product'
+    end 
 end
 
   # scope '/me' do
