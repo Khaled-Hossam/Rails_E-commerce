@@ -39,6 +39,8 @@ class Cart < ApplicationRecord
       where(user: user)
     end
 
+    
+
     # update cart product quantity by 1
     def increment_product_cart_quantity(product, user)
       cp=find_product_in_user_cart(product, user) 

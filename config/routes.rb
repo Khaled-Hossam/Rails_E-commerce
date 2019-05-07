@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :categories
 
   post 'carts/add_product'
-  get '/search' => 'home#search', :as => 'search_page'
+  get '/search' => 'products#search'
 
   scope '/me' do
     get '/cart', to: 'cart#index'

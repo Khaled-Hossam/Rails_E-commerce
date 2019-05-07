@@ -36,6 +36,7 @@
                                         <%end%>
                                     </ul>
                                 </li>
+                        <li class="drop"><%= link_to "Products", products_path %></li>
                                 <% if user_signed_in? %>
                                 <li class="drop"><%= link_to "Log Out", destroy_user_session_path, :method => 'delete' %></li>
                                 <%end%>

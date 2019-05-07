@@ -4,12 +4,36 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
-    
+    @all = @products
   end
 
+def search
+  @all = Product.all.word_search(params[:search])
+  @products = Product.all
+  if params[:search] 
+@products = @products.word_search(params[:search].downcase)
+  end
+if params[:brand] 
+  @products = @products.filter_by_brand(Integer(params[:brand]))
+end
+
+if params[:category] 
+  @products = @products.filter_by_category(Integer(params[:category]))
+end
+
+if params[:price]
+  @price = params[:price].split(/[^\d]/)
+  @products = @products.filter_by_price(@price)
+end
+
+if params[:seller]
+  @products = @products.filter_by_seller(params[:seller])
+end
+  render "products/index"
+end 
   # GET /products/1
   # GET /products/1.json
-  def show
+  def show  
     @products = Product.last(3).reverse
   end
 

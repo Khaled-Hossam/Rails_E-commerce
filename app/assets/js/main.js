@@ -243,6 +243,27 @@
     }
     offCanvasMenuDropdown();
 
+ var category_map = {};
+$('.select_category option').each(function () {
+    if (category_map[this.value]) {
+        $(this).remove()
+    }
+    category_map[this.value] = true;
+})
+var brand_map = {};
+$('.select_brand option').each(function () {
+    if (brand_map[this.value]) {
+        $(this).remove()
+    }
+    brand_map[this.value] = true;
+})
+var seller_map = {};
+$('.select_seller option').each(function () {
+    if (seller_map[this.value]) {
+        $(this).remove()
+    }
+    seller_map[this.value] = true;
+})
 
 /*------------------------------------    
     13. Overlay Close
