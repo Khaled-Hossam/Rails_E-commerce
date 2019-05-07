@@ -86,8 +86,8 @@ function redirectTo(url){
             $.ajax({
                 ... this.resource.get_products,
                 success: (res)=>{
-                    callback(res)
                     this.products = res
+                    callback(res)
                 },
                 error: ()=>{
                     // redirectTo("/users/sign_in");
@@ -104,6 +104,7 @@ function redirectTo(url){
                 },
                 success: (cart)=>{
                     // this.fetch_products()
+                    this.fetchAndNotifyAll()
                     callback()
                 },
                 error: (error)=>{
@@ -121,7 +122,8 @@ function redirectTo(url){
                     quantity: quantity,
                 },
                 success: (cart)=>{
-                    // this.fetch_products()
+                    this.fetchAndNotifyAll()
+
                     callback()
                 },
                 error: (error)=>{
@@ -137,12 +139,36 @@ function redirectTo(url){
                     product_id: product_id,
                 },
                 success: (cart)=>{
-                    // this.fetch_products()
+                    this.fetchAndNotifyAll()
+
                     callback()
                 },
                 error: (error)=>{
                 }
               });
+        }
+        this.observers = []
+        this.subscribe = (observer)=>{
+            this.observers.push(observer)
+        }
+
+        this.fetchAndNotifyAll = function(){
+            this.fetch_products(this.notifyAll)
+        }
+
+        this.notifyAll = (products)=>{
+            this.observers.forEach(o=>{
+                o.notify(products)
+            })
+        }
+
+
+        this.getItemsCount = function(){        
+            let sum =0 
+            this.products.forEach((cp)=>{
+                sum += cp.quantity
+            })
+            return sum
         }
     }
     const cpTemplate = new function (){
@@ -165,9 +191,10 @@ function redirectTo(url){
             $('.body__overlay').addClass('is-visible')
         }
 
-        this.update = function(){
-            this.products = cart.fetch_products((data) => {
-                this.products = data
+        this.update = function(data){
+
+                $('.htc__qua').text( cart.getItemsCount())
+                
                 $('.shp__cart__wrap').empty()
                 data.forEach(function(item){
                     $('.shp__cart__wrap').append(
@@ -175,7 +202,7 @@ function redirectTo(url){
                                 item.product.id,
                                 item.product.name,
                                 item.product.price,
-                                 item.quantity)
+                                item.quantity)
                         )
                 })
                 $('.remove__cp').click(function(){
@@ -187,15 +214,28 @@ function redirectTo(url){
                         $(node).remove()
                     })
                 })
-            })
         }
 
         this.updateAndShow = function(){
             this.update()
             this.show()
         }
+        this.notify = (products)=>{
+            console.log('Notified ', products)
+            this.update(products)
+        }
+        this.init = function (){
+            console.log('init called');
+            
+            cart.fetch_products((data) => {
+                console.log('fetch cb', data);
+                this.update(data)
+            })
+        } 
+        this.init()
+        cart.subscribe(this)
     }
-    cartOverlay.update()
+    
 
     $(".add_to_cart").click(function() {
         event.preventDefault()
@@ -204,7 +244,8 @@ function redirectTo(url){
             node = node.parentNode
         product_id = node.getAttribute('product_id')
         cart.add_product(product_id, ()=>{
-            cartOverlay.updateAndShow()     
+            // cartOverlay.show()     
+            // cartOverlay.updateNumber()
         })
     });
     
