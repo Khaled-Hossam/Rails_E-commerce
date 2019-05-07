@@ -3,6 +3,12 @@ class CouponsController < ApplicationController
 
   # GET /coupons
   # GET /coupons.json
+  def check
+    render json: current_user.can_use_coupon?(params['coupon_name']) 
+    # byebug
+    
+  end
+
   def index
     @coupons = Coupon.all
   end

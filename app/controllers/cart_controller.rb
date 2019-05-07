@@ -3,9 +3,10 @@ class CartController < ApplicationController
     
     def index
         @products=Cart.find_all_products_in_user_cart(current_user)
+        @cart_price = Cart.get_total_price(current_user)
     end
 
-    def get
+    def get_products
         render json: Cart.find_all_products_in_user_cart(current_user)
     end
 
@@ -17,15 +18,17 @@ class CartController < ApplicationController
     end
 
     def update_product
-        Cart.update_cart_product_quantity(
+        render json: Cart.update_cart_product_quantity(
             Product.find(params['product_id']) ,
             current_user, params['quantity'])
-            
-        render json: Cart.find_all_products_in_user_cart(current_user)
+        
     end
 
     def remove_product
-
+    render json: Cart.remove_product_from_user_cart(
+        Product.find(params['product_id']),
+        current_user 
+        )
     end
 
 
