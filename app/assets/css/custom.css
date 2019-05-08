@@ -16,3 +16,23 @@
 .order__total__value::before{
   content:"$"
 }
+
+.coupon__message{
+  padding-top: 10px;
+}
+
+.success{
+  color: greenyellow
+}
+.fail{
+  color: red
+}
+
+.discount__amount::before{
+  content: "-$"
+}
+
+.discount{
+  text-decoration: line-through;
+}
+

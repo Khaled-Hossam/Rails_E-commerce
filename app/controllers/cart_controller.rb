@@ -31,6 +31,10 @@ class CartController < ApplicationController
         )
     end
 
+    def create_order
+        Order.create(coupon_id: params['coupon_id'], user: current_user, )   
+    end
+
 
 
 end

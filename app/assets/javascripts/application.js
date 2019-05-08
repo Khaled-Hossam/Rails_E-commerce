@@ -288,33 +288,148 @@ $(function () {
     })
 
 
-    //// COUPONS ---------------------------
+    //// COUPON     ---------------------------
+
+    let used_coupon = {}
 
     $('.validate__coupon').click( function(){
         event.preventDefault()
-        $.ajax({
-            type: 'GET',
-            url: '/api/me/coupons/check',
-            data: {
-                coupon_name: $('.coupon__name').val(),
-            },
-            success: (resp) => {
-                if(resp)
-                    $('.coupon__message').text('Coupon accepted')
-                else 
-                    $('.coupon__message').text('Invalid Coupon')
-            },
-            error: (error) => {
+        let ping =false
+        let pong =false
 
-            }
-        });
+        coupon_name = $('.coupon__name').val()
+        if(coupon_name == 'Ping'){
+            ping = true     
+            $('.coupon__message').text('Pong')
+        } 
+        else if (coupon_name == 'Pong') {
+            pong = true
+            $('.coupon__message').text('Enjoy our free coupon: "Best Buds" ')
+        }
+        else{
+
+            $.ajax({
+                type: 'GET',
+                url: '/api/me/coupons/check',
+                data: {
+                    coupon_name: $('.coupon__name').val(),
+                },
+                success: (resp) => {
+                    $('.coupon__message').text('Coupon accepted')
+                    $('.coupon__message').removeClass('fail')
+                    $('.coupon__message').addClass('success')
+                    order.setCoupon(resp.data)
+
+                },
+                error: (error) => {
+                    $('.coupon__message').text('Invalid Coupon')
+                    $('.coupon__message').removeClass('success')
+
+                    $('.coupon__message').addClass('fail')
+                    order.setCoupon({})
+
+                }
+            });
+        }
     })
 
-    const order = new function (){
-        this.coupon_name = null
-        this.order_products = 
 
+    /// ORDER ------------------
+   
+    const order = new function (){
+        this.cart_price = 0
+        this.products={}
+        this.discount_amount = 0
+        this.total_order_price = 0
+        this.coupon = { }
+
+        cart.fetch_products((p)=>{
+            this.products =p
+            this.cart_price = cart.getTotalPrice()
+            this.updateOrder()
+
+        })
+        this.notify = (p)=>{
+            this.products = p
+            this.cart_price = cart.getTotalPrice()
+            this.updateOrder()
+
+        }
+        this.setCoupon = function(coupon){
+            this.coupon = coupon
+            this.updateOrder()
+            
+        }
+        this.updateDiscountAmount = function (){
+            this.discount_amount = Math.min(
+                this.coupon.discount_percentage * this.cart_price /100 || 0,
+                this.coupon.max_discount_amount || 0
+                )
+        }
+
+        this.updateOrderTotalPrice =function(){
+               this.total_order_price = this.cart_price - this.discount_amount
+        }
+
+        this.updateView = function(){
+            $('.cart__total__value').text(this.cart_price)
+            $('.discount__amount').text(this.discount_amount)
+            $('.order__total__value').text(this.total_order_price)
+            if (this.discount_amount > 0){
+                $('.cart__total__value').addClass('discount')
+            }else{
+                $('.cart__total__value').removeClass('discount')
+
+            }
+
+        }
+
+        this.updateOrder= function(){
+            this.updateDiscountAmount()
+            this.updateOrderTotalPrice()
+            this.updateView()
+        }
+        
+        this.create = function(){
+            $.ajax({
+                type: 'POST',
+                url: '/orders',
+                dataType: 'json',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    coupon_id: this.coupon.id || null,
+                    products:  extract(this.products),   
+                }),
+                success: (resp) => {
+                   alert('success')
+                },
+                error: (error) => {
+                    alert('')
+                }
+            });
+        }
+        cart.subscribe(this)
     }
+    function extract(products){
+        a=[]
+        products.forEach((cp)=>{
+            a.push({
+                product_id: cp.product.id,
+                quantity: cp.quantity,
+                purchased_price: cp.product.price 
+            }) 
+        })
+        return a
+    }
+    
+
+    $('.place__order').click(function(){
+        event.preventDefault()
+                    
+
+        order.create()
+    })
+
 })
 
 

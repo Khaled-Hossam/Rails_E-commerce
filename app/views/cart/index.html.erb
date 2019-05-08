@@ -72,6 +72,7 @@
                                     
                                 </div>
                                 <p class="coupon__message">
+                                 ie: Ping
                                 </p>
                             </div>
                         </div>
@@ -86,7 +87,7 @@
                                     </ul>
                                     <ul class="cart__price">
                                         <li >$<span class="cart__total__value"><%= @cart_price %></span></li>
-                                        <li>$9.00</li>
+                                        <li class="discount__amount">0.00</li>
                                         
                                     </ul>
                                 </div>
@@ -96,7 +97,7 @@
                                     <span class="order__total__value"> <%= @cart_price %> </span>
                                 </div>
                                 <ul class="payment__btn">
-                                    <li class="active"><a href="#">Place order</a></li>
+                                    <li class="active"><a href="#" class="place__order">Place order</a></li>
                                 <li><%= link_to "Continue Shopping", root_path %></li></li>
                                 </ul>
                             </div>

@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
   load_and_authorize_resource
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
+
 
   # GET /orders
   # GET /orders.json
@@ -26,17 +28,9 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(order_params)
-
-    respond_to do |format|
-      if @order.save
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
-        format.json { render :show, status: :created, location: @order }
-      else
-        format.html { render :new }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
-    end
+    
+    Order.create(user: current_user, coupon_id: params[:coupon_id])
+   
   end
 
   # PATCH/PUT /orders/1

@@ -4,10 +4,23 @@ class CouponsController < ApplicationController
   # GET /coupons
   # GET /coupons.json
   def check
-    render json: current_user.can_use_coupon?(params['coupon_name']) 
-    # byebug
-    
+    cp=Coupon.find_by_name(params['coupon_name'])
+    if cp.present?
+      result = cp.valid?  && current_user.not_used_coupon?(cp)
+      render json: {
+        valid: result,
+        data: Coupon.find_by_name(params['coupon_name']) || nil
+      }
+    else
+      render json: {}, status: 404
+    end
+      
   end
+
+  def discount_percentage
+    render json: Coupon.find(params['coupon_id']).coupon_discount(params['price'])
+  end
+
 
   def index
     @coupons = Coupon.all

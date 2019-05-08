@@ -22,6 +22,7 @@ class Cart < ApplicationRecord
     self.product.price
   end
 
+
   def product_instock_quantity
     self.product.instock_quantity
   end

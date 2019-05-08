@@ -11,7 +11,6 @@ Rails.application.routes.draw do
     put :deliver
   end
   resources :ratings
-  resources :states
   resources :order_products
   resources :images
   resources :products
@@ -33,6 +32,7 @@ Rails.application.routes.draw do
     scope '/me' do
       get '/coupons/check'  
       get '/cart/get_products' 
+      # post '/cart/create_order' 
       post '/cart/add_product'
       put '/cart/update_product'
       delete '/cart/remove_product'

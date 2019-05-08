@@ -13,6 +13,10 @@ class Ability
         can :create, Product
         can :read, Order
       end
+      
+      if user.role == "buyer"
+        can :create, Order
+      end
 
       # if user.admin?  # additional permissions for administrators
       #   can :read, post

@@ -13,14 +13,23 @@ class User < ApplicationRecord
   def to_s
     self.email
   end
-  def can_use_coupon?(coupon_name)
-    return false unless  Coupon.coupon_exist?(coupon_name)
-    return user_coupons.coupon_exist?(coupon_name) ? false : true
+  def not_used_coupon?(coupon)
+      !used_coupon?(coupon)  
+  end
+
+  def used_coupon?(coupon)
+     user_coupons.find(coupon.id).present?
   end
   
   def user_coupons
     self.coupons
   end
+
+  def use_coupon(coupon)
+    self.coupons << coupon
+
+  end
+
   
   class << self
     def clear_user_coupon()
