@@ -15,6 +15,8 @@ class Order < ApplicationRecord
               quantity: cp.quantity)
     }
 
+    Cart.clear_user_cart(self.user)
+
   end
 
   class << self
