@@ -10,5 +10,6 @@ class OrderProduct < ApplicationRecord
       @items=OrderProduct.where(order_id: order)
     end
 
+
   end
 end

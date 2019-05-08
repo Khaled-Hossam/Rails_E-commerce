@@ -5,10 +5,10 @@ class Store < ApplicationRecord
   before_update do
 
     old_user=Store.where(id: self.id).first.user
-    if (old_user != nil)
+    if old_user != nil
       old_user.update(isActive: false )
     end
-    if (self.user_id != nil )
+    if self.user_id != nil
       user=User.find(self.user_id)
       user.update(isActive: true)
     end
