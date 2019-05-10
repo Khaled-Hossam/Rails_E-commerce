@@ -86,7 +86,8 @@ $(function () {
                     callback()
                 },
                 error: (error) => {
-                    redirectTo("/users/sign_in");
+                    if (error.status == 403)
+                        redirectTo("/users/sign_in");
                 }
             });
         }
@@ -244,7 +245,7 @@ $(function () {
     const cartTable = new function () {
         this.update = function () {
             if (cart.last.action === 'remove') {
-                $(`tr[product_id^='${cart.last.resp.product.id}']`).remove()
+                $(`tr[product_id^='${cart.last.resp.data.product_id}']`).remove()
             }
 
             $('.order__total__value').text(cart.getTotalPrice())
