@@ -18,35 +18,28 @@
                 <th class="product-thumbnail">Order Id</th>
                 <th class="product-name">Order Date </th>
                 <th class="product-category">Itmes </th>
-                <th class="product-brand">Items Quantity</th>
+                <th class="product-brand">Purchased Price</th>
                 <th class="product-store">Order Status</th>
-                <%if current_user.role == "seller" %>
-
               <th class="product-actions">Actions</th>
-                  <%end %>
 
               </tr>
               </thead>
               <tbody>
-              <% @orders.each do |order| %>
+              <% @orderProducts.each do |order| %>
 
                 <tr>
-                  <td class="product-category"><%=order.id%></td>
+                  <td class="product-category"><%=order.order_id%></td>
                   <td class="product-category"><%=order.created_at%></td>
-                       <%order.order_products.each do |item| %>
-                  <td>
-                    <table>
-                      <tr>
-                        <td  class="product-quantity"><%=item.product.name %> </td>
-                        <td class="product-quantity"><%=item.product.instock_quantity %> </td>
+                  <td class="product-category"><%=order.product_id%></td>
 
-                  </tr>
-                    </table>
+                  <td class="product-category"><%=order.purchased_price%></td>
+                  <td class="product-category"><%=order.status%></td>
+                  <%if current_user.role == "seller" %>
+                  <td >
+                    <%= link_to 'Confirm', order_confirm_path(order.id),method: :put ,class:'btn btn-primary' %>
+                    <%= link_to 'Deliver', order_deliver_path(order.id),method: :put ,class:'btn btn-primary' %>
                   </td>
                   <%end %>
-
-
-                  <td class="product-subtotal"><%=order.status %></td>
                 </tr>
               <%end%>
               </tbody>

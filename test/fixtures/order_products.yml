@@ -4,10 +4,7 @@ one:
   purchased_price: 9.99
   order: one
   product: one
-  state: one
-
 two:
   purchased_price: 9.99
   order: two
   product: two
-  state: two

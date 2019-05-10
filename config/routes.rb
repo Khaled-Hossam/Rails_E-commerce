@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   end
 
   scope '/api' do
-    
+
     
     scope '/me' do
       get '/coupons/check'  
@@ -52,7 +52,7 @@ end
   end
 
   #to change the rails error page when route doessn't match
-  get '*unmatched_route', to: 'home#not_found'
+  # get '*unmatched_route', to: 'home#not_found'
   
   root 'home#index'
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

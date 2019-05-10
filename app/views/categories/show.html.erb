@@ -1,9 +1,33 @@
-<p id="notice"><%= notice %></p>
+                                  <p id="notice"><%= notice %></p>
+                                  <div class="container" style="padding:15px;"> 
+                                  <p>
+                                <strong class='btn btn-danger' style="font-size:20px;width200px;border-radius:15px;text-transform: uppercase;
 
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
+                                          ">
+                                          <%= @category.name  %></strong>
+                                          </p>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+                                        <% Category.get_products_by_category(@category.id).each do |item|%> 
+                                                <div class="ht__list__product">
+                                                    <div class="ht__list__thumb">
+                                                    <% if item.image.attached? %>
+                                                   <div style="width:290px;height:385px;">
+                                                    <%= link_to (image_tag(item.image) if item.image.attached?), item %> </div>
+                                                    <% else %>
+                                                    <%= link_to (image_tag "product/1.jpg" ), item %>
+                                                    <% end %>                                                    </div>
+                                                    <div class="htc__list__details">
+                                                    <h2> <%= item.name %></h2>
+                                                        <ul  class="pro__prize">
+                                                            <li class="old__prize">$82.5</li>
+                                                            <li>$75.2</li>
+                                                        </ul>
+                                                        <p> <%= item.description %></p>
+                                                        <div class="fr__list__btn">
+                                                            <a class="fr__btn" href="cart.html">Add To Cart</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <%end%>
+                                                <!-- End List Product -->
+</div>

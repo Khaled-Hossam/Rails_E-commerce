@@ -1,14 +1,22 @@
 class OrdersController < ApplicationController
-  load_and_authorize_resource
+  # load_and_authorize_resource
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   skip_before_action :verify_authenticity_token
 
 
   # GET /orders
   # GET /orders.json
+
   def index
+    if current_user.role == "buyer"
     @orders = Order.get_orders_for_current_user(current_user)
-    # @items = Order.get_items_in_order_for_user(@orders.id)
+
+    elsif current_user.role == "seller"
+      @orderProducts = Order.get_items_in_order_for_user(current_user)
+
+      render "index-seller"
+      end
+
   end
 
   # GET /orders/1
@@ -58,17 +66,15 @@ class OrdersController < ApplicationController
   end
 
   def confirm
-    # byebug
-    @order=Order.where(id: params[:order_id])
-    @order.update(state_id: "1")
-    redirect_to request.referrer
+    @orderProduct=OrderProduct.where(id: params[:order_id])
+    @orderProduct.update(status: 1)
+    redirect_to "/orders"
   end
 
   def deliver
-    @order=Order.where(id: params[:order_id])
-    @order.update(state_id: "3")
-    # byebug
-    redirect_to request.referrer
+    @orderProduct=OrderProduct.where(id: params[:order_id])
+    @orderProduct.update(status: 2)
+    redirect_to "/orders"
 
   end
 
