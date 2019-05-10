@@ -414,7 +414,7 @@ $(function () {
                     products:  extract(this.products),   
                 }),
                 success: (resp) => {
-                   alert('success')
+                   redirectTo('/orders')
                 },
                 error: (error) => {
                     alert('')

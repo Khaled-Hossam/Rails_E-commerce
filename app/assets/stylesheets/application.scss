@@ -19,3 +19,7 @@
  @import 'font-awesome.css';
 
 
+ .table-nostriped tbody tr:nth-of-type(odd) {
+    background-color:transparent;
+  }
+  

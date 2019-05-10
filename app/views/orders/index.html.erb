@@ -12,13 +12,13 @@
       <div class="col-md-12 col-sm-12 col-xs-12">
         <form action="#">
           <div class="table-content table-responsive">
-            <table>
+            <table class="table table-bordered table-sm table-striped">
               <thead>
               <tr>
                 <th class="product-thumbnail">Order Id</th>
                 <th class="product-name">Order Date </th>
-                <th class="product-category">Itmes </th>
-                <th class="product-brand">Items Quantity</th>
+                <th class="product-category">Order Info </th>
+                
                 <th class="product-store">Order Status</th>
                 <%if current_user.role == "seller" %>
 
@@ -29,26 +29,31 @@
               </thead>
               <tbody>
               <% @orders.each do |order| %>
-
-                <tr>
-                  <td class="product-category"><%=order.id%></td>
-                  <td class="product-category"><%=order.created_at%></td>
-                       <%order.order_products.each do |item| %>
-                  <td>
-                    <table>
-                      <tr>
-                        <td  class="product-quantity"><%=item.product.name %> </td>
+              <tr>
+              <td class="product-category"><%=order.id%></td>
+              <td class="product-category"><%=order.created_at%></td>
+              
+              <td>
+              <table class="table table-sm table-borderless table-nostriped">
+              <th class="product-brand">Product</th>
+              <th class="product-brand">Ordered Quantity</th>
+              <th class="product-brand">InStock</th>
+              <%order.order_products.each do |item| %>
+              <tr>
+                      <td  class="product-quantity"><%=item.product.name %> </td>
+                      <td class="product-quantity"><%=item.quantity %> </td>
                         <td class="product-quantity"><%=item.product.instock_quantity %> </td>
-
-                  </tr>
-                    </table>
+                              
+                      </tr>
+                      <%end%>
+         
+                      </table>
                   </td>
-                  <%end %>
-
-
                   <td class="product-subtotal"><%=order.status %></td>
-                </tr>
+
+              </tr>
               <%end%>
+
               </tbody>
             </table>
           </div>

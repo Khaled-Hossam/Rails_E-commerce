@@ -19,13 +19,20 @@ class Order < ApplicationRecord
 
   end
 
+  def items_count
+    self.order_products.count
+  end
+
+
   class << self
 
     def get_orders_for_current_user(user)
 
             @orders=Order.where(user_id: user.id)
-            orderProducts=OrderProduct.where(order_id: @orders.first.id)
+            
+            orderProducts=OrderProduct.where(order_id: @orders.first.id) if @orders.present?
 
+            if orderProducts.present?
             orderProducts.each do |product|
               if product.status == "delivered"
                 @orders.update(status: 2)
@@ -35,6 +42,7 @@ class Order < ApplicationRecord
                 @orders.update(status: 0)
               end
             end
+          end
 
           return @orders
 
@@ -46,6 +54,8 @@ class Order < ApplicationRecord
       @orderProducts=OrderProduct.where(product_id: products.ids)
     end
 
+
+   
 
 
 
