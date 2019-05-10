@@ -315,24 +315,36 @@ $(function () {
                     coupon_name: $('.coupon__name').val(),
                 },
                 success: (resp) => {
-                    $('.coupon__message').text('Coupon accepted')
-                    $('.coupon__message').removeClass('fail')
-                    $('.coupon__message').addClass('success')
-                    order.setCoupon(resp.data)
+                    console.log('resp', resp.valid)
+
+                    if (resp.valid)
+                        valid_coupon()
+                    else 
+                        invalid_coupon()
 
                 },
                 error: (error) => {
-                    $('.coupon__message').text('Invalid Coupon')
-                    $('.coupon__message').removeClass('success')
-
-                    $('.coupon__message').addClass('fail')
-                    order.setCoupon({})
+                    invalid_coupon()
 
                 }
             });
         }
     })
+    function valid_coupon(){
+        $('.coupon__message').text('Coupon accepted')
+        $('.coupon__message').removeClass('fail')
+        $('.coupon__message').addClass('success')
+        order.setCoupon(resp.data)
+    }
 
+
+    function invalid_coupon(){
+        $('.coupon__message').text('Invalid Coupon')
+        $('.coupon__message').removeClass('success')
+        $('.coupon__message').addClass('fail')
+        order.setCoupon({})
+
+    }
 
     /// ORDER ------------------
    

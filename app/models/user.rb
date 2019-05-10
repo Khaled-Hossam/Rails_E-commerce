@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_one :store
   has_one :cart
   has_and_belongs_to_many :coupons
+  has_many :orders
 
   accepts_nested_attributes_for :store
 

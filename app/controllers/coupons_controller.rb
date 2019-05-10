@@ -1,20 +1,32 @@
 class CouponsController < ApplicationController
   before_action :set_coupon, only: [:show, :edit, :update, :destroy]
 
+  
   # GET /coupons
   # GET /coupons.json
   def check
     cp=Coupon.find_by_name(params['coupon_name'])
     if cp.present?
-      result = cp.valid?  && current_user.not_used_coupon?(cp)
-      render json: {
-        valid: result,
-        data: Coupon.find_by_name(params['coupon_name']) || nil
-      }
+      cp.valid?  && current_user.not_used_coupon?(cp) ?
+       return_with_success : 
+        return_with_fail(400)
     else
-      render json: {}, status: 404
+      return_with_fail(400)    
     end
       
+  end
+
+  def return_with_success
+    render json: {
+      valid: true,
+      data: cp
+    }
+  end
+
+  def return_with_fail(code)
+    render json: {
+      valid: false
+    }, status: code
   end
 
   def discount_percentage

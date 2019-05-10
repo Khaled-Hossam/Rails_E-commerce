@@ -3,7 +3,9 @@ class Cart < ApplicationRecord
   belongs_to :user
   # to make sure that every not cart_product have a negative or a zero value 
 
-
+  before_update do |cart_product|
+    self.delete if self.quantity.zero? || self.quantity.negative?
+  end
 
 
   after_update do |cart_product|
