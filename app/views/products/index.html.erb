@@ -105,12 +105,8 @@
                                         <%= link_to (image_tag "product/1.jpg" ), item %>
                                         <% end %>
                                                 </div>
-                                                <div class="fr__hover__info">
-                                                    <ul class="product__action">
-                                                        <li><a href="wishlist.html"><i class="icon-heart icons"></i></a></li>
-                                                        <li><a href="cart.html"><i class="icon-handbag icons"></i></a></li>                         <li><a href="#"><i class="icon-shuffle icons"></i></a></li>
-                                                    </ul>
-                                                </div>
+                                                <%= render :partial => 'item', :object => item  %>
+                                              
                                                 <div class="fr__product__inner">
                                                     <h4> <%= item.name %></h4>
                                                     <ul class="fr__pro__prize">
@@ -143,7 +139,7 @@
                                                         </ul>
                                                         <p> <%= item.description %></p>
                                                         <div class="fr__list__btn">
-                                                            <a class="fr__btn" href="cart.html">Add To Cart</a>
+                                                            <a class ="fr__btn add_to_cart" product_id="<%= item.id %>" href="#">Add To Cart </a>
                                                         </div>
                                                     </div>
                                                 </div>

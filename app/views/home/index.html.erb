@@ -73,15 +73,9 @@
 
                                         <% end %>
                                             </a>
-                                        <div class="fr__hover__info">
-                                            <ul class="product__action">
-                                                <li><a href="wishlist.html"><i class="icon-heart icons"></i></a></li>
+                                              <%= render :partial => 'item', :object => item  %>
 
-                                                <li ><a class ="add_to_cart" product_id="<%= item.id %>" href="#"><i class="icon-handbag icons" ></i></a></li>
-
-                                                <li><a href="#"><i class="icon-shuffle icons"></i></a></li>
-                                            </ul>
-                                        </div>
+                                       
                                         <div class="fr__product__inner">
                                             <h4><a href="product-details.html"> <%= item.name %></a></h4>
                                             <ul class="fr__pro__prize">
